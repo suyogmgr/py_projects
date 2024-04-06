@@ -1,4 +1,4 @@
-'''
+"""
 def main():
     plate = input("Plate: ")
     if is_valid(plate):
@@ -16,10 +16,10 @@ def is_valid(s):
         return True
 
 main()
-'''
+"""
 
 
-''' 
+""" 
 fruits = {
     "apple" : 130,
     "avocado" : 50,
@@ -44,9 +44,9 @@ fruits = {
 }
 fruit = input("Item: ").lower().s
 print(f"Calories: {fruits[fruit]}")
-'''
+"""
 
-'''
+"""
 def is_valid(s):
     # Check if s has at least two letters
     if len(s) < 2:
@@ -85,8 +85,7 @@ if is_valid(plate):
     print("Valid")
 else:
     print("Invalid")
-'''
-
+"""
 
 
 # def get_fuel():
@@ -118,7 +117,7 @@ else:
 # get_fuel()
 
 
-'''
+"""
 def main():
     menu = {
     "Baja Taco": 4.25,
@@ -145,9 +144,9 @@ def main():
                 print(f"${total:.2f}")
         
 main()
-'''
+"""
 
-'''
+"""
 grocery = ["apple", "apple", "banana", "banana", "banana", "banana"]
 grocery_dict = {}
 for i in grocery:
@@ -159,9 +158,9 @@ for i in grocery:
 
 for i, grocery in enumerate(grocery_dict):
     print(i, grocery)
-'''
+"""
 
-'''
+"""
 months = [
     "January",
     "February",
@@ -206,9 +205,9 @@ while True:
                 continue
     except ValueError:
         pass
-'''
+"""
 
-'''
+"""
 import sys 
 import random
 from pyfiglet import Figlet
@@ -235,24 +234,196 @@ if len(sys.argv) >= 2:
         usr_font = sys.argv[2]
         f = Figlet(font=usr_font) 
         print(f.renderText(f"{usr_input}"))
-'''
+"""
 
 
-name_list = ["suyog","bipan",] #,"ganesh", "ram", "sita"]
+# name_list = ["suyog","bipan","ganesh","ram","sita"]
+"""
+
+def adieu(name_list):
+    if len(name_list) == 1:
+        print(f"Adieu, adieu, to {name_list[0]}")
+
+    elif len(name_list) == 2:
+        print(f"Adieu, adieu, to {name_list[0]} and {name_list[1]}")
+
+    else:
+        edited_name_list = ", ".join(name_list[:-1])
+        print(f"Adieu, adieu, to {edited_name_list}, and {name_list[-1]}")
+
+def main():
+    name_list = []
+    try:
+         while True:
+            usr_name = input("Name: ")
+            name_list.append(usr_name)
+    except EOFError:
+        print()
+        pass
+    
+    adieu(name_list)
 
 
-if len(name_list) == 1:
-    print(f"Adieu, adieu, to {name_list[0]}") 
-elif len(name_list) == 2:
-    print(f"Adieu, adieu, to {name_list[0]} and {name_list[1]}") 
-else:
-    print(f"Adieu, adieu, to")
+main()
+"""
 
-# while True:
-#     try:
-#         usr_name = input("Name: ")
-#         name_list.append(usr_name)
-#     except EOFError:
-#         print(name_list)
-#         print()
-#         break
+"""
+import random
+
+while True:
+    try:
+        usr_input = int(input("Level: "))
+    except ValueError:
+        continue 
+
+    if usr_input <= 0:
+        continue
+    else:
+        random_num = random.randint(1,usr_input)
+        break
+
+
+while True:
+    try:
+        usr_guess = int(input("Guess: "))
+    except ValueError:
+        continue
+    
+    if usr_guess > random_num:
+        print("Too large!")
+    elif usr_guess < random_num:
+        print("Too small!")
+    else:
+        print("Just right!")
+        break
+"""
+
+"""
+import random
+
+def get_level():
+    while True:
+        options = [1, 2, 3]
+        try:
+            level = int(input("Level: "))
+            if level not in options:
+                raise ValueError
+            else:
+                return level
+        except ValueError:
+            continue
+
+def generate_integer(get_level):
+    score = 0
+    
+    for _ in range(10):    
+        if get_level == 1:
+            x = random.randint(0,9)
+            y = random.randint(0,9)
+            tries = 3
+            ans = x + y
+            while True:
+
+                if tries == 0:
+                    print(f"{x} + {y} = {ans}")
+                    break
+                try:
+                    usr_ans = int(input(f"{x} + {y} = "))
+                except ValueError:
+                    tries -= 1
+                    print("EEE")
+                    continue
+
+                if ans != usr_ans:
+                    tries -= 1
+                    print("EEE")
+                    continue
+                elif ans == usr_ans:
+                    score += 1
+                    break 
+            
+    
+        elif get_level == 2:
+            x = random.randint(10,99)
+            y = random.randint(10,99)
+            tries = 3
+            ans = x + y
+            while True:
+
+                if tries == 0:
+                    print(f"{x} + {y} = {ans}")
+                    break
+                
+                usr_ans = int(input(f"{x} + {y} = "))
+
+                if ans != usr_ans:
+                    tries -= 1
+                    print("EEE")
+                    continue
+                elif ans == usr_ans:
+                    score += 1
+                    break 
+            
+
+        elif get_level == 3:
+            x = random.randint(100,999)
+            y = random.randint(100,999)
+            tries = 3
+            ans = x + y
+            while True:
+
+                if tries == 0:
+                    print(f"{x} + {y} = {ans}")
+                    break
+                
+                usr_ans = int(input(f"{x} + {y} = "))
+
+                if ans != usr_ans:
+                    tries -= 1
+                    print("EEE")
+                    continue
+                elif ans == usr_ans:
+                    score += 1
+                    break 
+    print(f"{score}")
+        
+
+def main():
+    generate_integer(get_level())
+
+main()
+"""
+
+
+import sys
+import requests
+import json
+
+
+def bitcoin_rate():
+
+    response = requests.get("https://api.coindesk.com/v1/bpi/currentprice.json")
+
+    # print(json.dumps(response.json(), indent=2))
+
+    dollar = response.json()
+    us_dollar = dollar["bpi"]["USD"]["rate_float"]
+    bitcoin = float(sys.argv[1])
+    return f"${bitcoin * us_dollar:,.4f}"
+
+
+def main():
+    while True:
+        try:
+            if len(sys.argv) != 2:
+                print("Missing command-line argument")
+                break
+            elif float(sys.argv[1]):
+                print(bitcoin_rate())
+                break
+        except ValueError:
+            print("working")
+            break
+
+
+main()
