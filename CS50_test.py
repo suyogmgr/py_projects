@@ -394,7 +394,7 @@ def main():
 main()
 """
 
-
+"""
 import sys
 import requests
 import json
@@ -427,3 +427,55 @@ def main():
 
 
 main()
+"""
+
+"""
+import sys
+import os
+
+def file_reader(file_name):
+    loc = 0
+    try:
+        with open(file_name) as test:
+            for line in test:
+                stripped_lines = line.strip()
+                if stripped_lines and not stripped_lines.startswith("#"):
+                    loc += 1
+    except FileNotFoundError:
+        sys.exit("No file found")
+        
+    return loc
+
+def main():
+    if len(sys.argv) < 2:
+        sys.exit("Two few command lines")
+    elif len(sys.argv) > 2:
+        sys.exit("Two many command lines")
+
+    file_name = sys.argv[1]
+
+    if not file_name.endswith(".py"):
+        sys.exit("Not a python file")
+
+
+    if not os.path.isfile(file_name):
+        sys.exit(f"No file named {file_name} exist")
+
+    lines_of_code = file_reader(file_name)
+    print(lines_of_code)
+
+if __name__ == "__main__":
+    main()
+"""
+
+#pizza 
+from tabulate import tabulate
+import sys
+import os
+
+with open(sys.argv[1]) as csv:
+    for line in csv:
+        stripped_csv = line.strip()
+        lines = stripped_csv.readlines()
+        headers = [lines[:0]]
+        print(headers)
